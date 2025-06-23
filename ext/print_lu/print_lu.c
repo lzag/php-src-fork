@@ -16,27 +16,32 @@
 	ZEND_PARSE_PARAMETERS_END()
 #endif
 
-PHP_FUNCTION(test1)
+PHP_FUNCTION(printLuLu)
 {
-	ZEND_PARSE_PARAMETERS_NONE();
+	zend_long line_len = 10;
+	char *var;
+	size_t var_len;
+	size_t i;
 
-	php_printf("The extension %s is loaded and working!\r\n", "print_lu");
-}
-
-PHP_FUNCTION(test2)
-{
-	char *var = "World";
-	size_t var_len = sizeof("World") - 1;
-	zend_string *retval;
-
-	ZEND_PARSE_PARAMETERS_START(0, 1)
-		Z_PARAM_OPTIONAL
-		Z_PARAM_STRING(var, var_len)
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+			Z_PARAM_STRING(var, var_len)
+			Z_PARAM_OPTIONAL
+			Z_PARAM_LONG(line_len)
 	ZEND_PARSE_PARAMETERS_END();
 
-	retval = strpprintf(0, "Hello %s", var);
+	for (i = 0; i < line_len; i++) {
+		php_printf("%c", i % 2 == 0 ? '=' : '-');
+	}
+	php_printf("\n");
 
-	RETURN_STR(retval);
+	php_printf("%s\n", var);
+
+	for (i = 0; i < line_len; i++) {
+			php_printf("%c", i % 2 == 0 ? '=' : '-');
+	}
+	php_printf("\n");
+
+	RETURN_NULL();
 }
 
 PHP_RINIT_FUNCTION(print_lu)
