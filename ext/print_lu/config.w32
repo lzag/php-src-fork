@@ -1,0 +1,7 @@
+ARG_ENABLE('print_lu', 'print_lu support', 'no');
+
+if (PHP_PRINT_LU != 'no') {
+	AC_DEFINE('HAVE_PRINT_LU', 1, "Define to 1 if the PHP extension 'print_lu' is available.");
+
+	EXTENSION('print_lu', 'print_lu.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
+}
