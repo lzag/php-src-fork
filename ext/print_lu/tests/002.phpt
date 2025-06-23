@@ -1,13 +1,16 @@
 --TEST--
-test1() Basic test
+printLulu Basic test
 --EXTENSIONS--
 print_lu
 --FILE--
 <?php
-$ret = test1();
-
-var_dump($ret);
+printLuLu("Hello, World!");
+printLuLu("Hello, World!", 4);
 ?>
 --EXPECT--
-The extension print_lu is loaded and working!
-NULL
+=-=-=-=-=-
+Hello, World!
+=-=-=-=-=-
+=-=-
+Hello, World!
+=-=-

@@ -1,12 +1,13 @@
 --TEST--
-getLen Basic test
+printWrap Basic test
 --EXTENSIONS--
 print_lu
 --FILE--
 <?php
 $printLu = new PrintLu();
-$len = $printLu->getLuLen("Hello World");
-var_dump($len);
+$printLu->printWrap("Hello, World!", 4);
 ?>
 --EXPECT--
-int(11)
+=-=-
+Hello, World!
+=-=-
